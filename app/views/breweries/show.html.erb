@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @brewery.name %>
+</p>
+
+<p>
+  <strong>Brewery type:</strong>
+  <%= @brewery.brewery_type %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @brewery.department %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @brewery.city %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @brewery.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @brewery.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @brewery.email %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @brewery.web %>
+</p>
+
+<p>
+  <strong>Serves people:</strong>
+  <%= @brewery.serves_people %>
+</p>
+
+<p>
+  <strong>Foursquare:</strong>
+  <%= @brewery.foursquare_id %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @brewery.lat %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @brewery.lng %>
+</p>
+
+<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<%= link_to 'Back', breweries_path %>

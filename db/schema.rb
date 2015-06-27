@@ -11,9 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150627202530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "breweries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brewery_type"
+    t.string   "department"
+    t.string   "city"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "web"
+    t.boolean  "serves_people"
+    t.string   "foursquare_id"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "breweries", ["foursquare_id"], name: "index_breweries_on_foursquare_id", unique: true, using: :btree
 
 end
