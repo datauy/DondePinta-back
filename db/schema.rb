@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627203935) do
+ActiveRecord::Schema.define(version: 20150627210057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20150627203935) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "beers_breweries", id: false, force: :cascade do |t|
+    t.integer "brewery_id", null: false
+    t.integer "beer_id",    null: false
+  end
+
+  add_index "beers_breweries", ["brewery_id", "beer_id"], name: "index_beers_breweries_on_brewery_id_and_beer_id", using: :btree
+
+  create_table "beers_venues", id: false, force: :cascade do |t|
+    t.integer "venue_id", null: false
+    t.integer "beer_id",  null: false
+  end
+
+  add_index "beers_venues", ["venue_id", "beer_id"], name: "index_beers_venues_on_venue_id_and_beer_id", using: :btree
 
   create_table "breweries", force: :cascade do |t|
     t.string   "name"
@@ -47,5 +61,21 @@ ActiveRecord::Schema.define(version: 20150627203935) do
   end
 
   add_index "breweries", ["foursquare_id"], name: "index_breweries_on_foursquare_id", unique: true, using: :btree
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "venue_type"
+    t.string   "department"
+    t.string   "city"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "web"
+    t.string   "foursquare_id"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
 end
