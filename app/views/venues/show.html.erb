@@ -55,5 +55,10 @@
   <%= @venue.lng %>
 </p>
 
+<p>
+  <strong>Beers:</strong>
+  <%= @venue.beers.pluck(:name).join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>

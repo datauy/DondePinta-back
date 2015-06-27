@@ -59,6 +59,10 @@
     <%= f.label :lng %><br>
     <%= f.text_field :lng %>
   </div>
+  <div class="field">
+    <%= f.label :beer_ids %><br>
+    <%= f.collection_select :beer_ids, Beer.all, :id, :name, {}, multiple: true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
