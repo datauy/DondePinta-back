@@ -1,14 +1,8 @@
 class BreweriesController < ApplicationController
-  before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :set_brewery, only: [:edit, :update, :destroy]
 
   def index
     @breweries = Brewery.all
-  end
-
-  def show
-  end
-
-  def new
     @brewery = Brewery.new
   end
 
@@ -20,9 +14,12 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
-        format.html { redirect_to @brewery, notice: 'Brewery was successfully created.' }
+        format.html { redirect_to breweries_url, notice: 'Brewery was successfully created.' }
       else
-        format.html { render :new }
+        format.html do
+          @breweries = Brewery.all
+          render :index
+        end
       end
     end
   end
@@ -30,7 +27,7 @@ class BreweriesController < ApplicationController
   def update
     respond_to do |format|
       if @brewery.update(brewery_params)
-        format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
+        format.html { redirect_to edit_brewery_url(@brewery), notice: 'Brewery was successfully updated.' }
       else
         format.html { render :edit }
       end
