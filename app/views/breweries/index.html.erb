@@ -61,11 +61,6 @@
             </label>
           </div>
 
-          <div class="form-group">
-            <%= f.collection_select :beer_ids, Beer.all, :id, :name, {}, class: 'form-control',
-              multiple: true, placeholder: Brewery.human_attribute_name('foursquare_id') %>
-          </div>
-
           <%= f.submit class: 'btn btn-primary btn-block' %>
         <% end %>
       </div>

@@ -8,6 +8,11 @@
   <div class="col-lg-6">
     <%= form_for @beer do |f| %>
       <div class="form-group">
+        <%= f.label :brewery_id %>
+        <%= f.collection_select :brewery_id, Brewery.all, :id, :name, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>

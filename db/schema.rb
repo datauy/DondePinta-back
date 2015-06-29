@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627210057) do
+ActiveRecord::Schema.define(version: 20150629024954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,10 @@ ActiveRecord::Schema.define(version: 20150627210057) do
     t.boolean  "draft"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "brewery_id", null: false
   end
 
-  create_table "beers_breweries", id: false, force: :cascade do |t|
-    t.integer "brewery_id", null: false
-    t.integer "beer_id",    null: false
-  end
-
-  add_index "beers_breweries", ["brewery_id", "beer_id"], name: "index_beers_breweries_on_brewery_id_and_beer_id", using: :btree
+  add_index "beers", ["brewery_id"], name: "index_beers_on_brewery_id", using: :btree
 
   create_table "beers_venues", id: false, force: :cascade do |t|
     t.integer "venue_id", null: false
@@ -78,4 +74,5 @@ ActiveRecord::Schema.define(version: 20150627210057) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "beers", "breweries"
 end

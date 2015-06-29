@@ -29,9 +29,8 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :beer_ids %>
-        <%= f.collection_select :beer_ids, Beer.all, :id, :name, {}, multiple: true,
-          class: 'form-control' %>
+        <%= f.label :beers %>
+        <p class="form-control-static"><%= @brewery.beer_descriptions %></p>
       </div>
 
       <%= f.submit class: 'btn btn-success' %>
