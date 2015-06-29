@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :venues
-  resources :beers
+  resources :beers, except: [:new, :show]
   resources :breweries, except: [:new, :show]
 
   root 'breweries#index'

@@ -1,49 +1,55 @@
-<%= form_for(@beer) do |f| %>
-  <% if @beer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render 'shared/model_errors', model: @beer %>
+  </div>
+</div>
 
-      <ul>
-      <% @beer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-lg-6">
+    <%= form_for @beer do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="form-group">
+        <%= f.label :brand %>
+        <%= f.text_field :brand, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :style %>
+        <%= f.text_field :style, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :color %>
+        <%= f.text_field :color, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :alcohol %>
+        <%= f.text_field :alcohol, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bitterness %>
+        <%= f.text_field :bitterness, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :size %>
+        <%= f.text_field :size, class: 'form-control' %>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :draft %>Draft?
+        </label>
+      </div>
+
+      <%= f.submit class: 'btn btn-success' %>
+      <%= link_to 'Back', beers_url %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :brand %><br>
-    <%= f.text_field :brand %>
-  </div>
-  <div class="field">
-    <%= f.label :style %><br>
-    <%= f.text_field :style %>
-  </div>
-  <div class="field">
-    <%= f.label :color %><br>
-    <%= f.text_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label :alcohol %><br>
-    <%= f.text_field :alcohol %>
-  </div>
-  <div class="field">
-    <%= f.label :bitterness %><br>
-    <%= f.text_field :bitterness %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label :draft %><br>
-    <%= f.check_box :draft %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
