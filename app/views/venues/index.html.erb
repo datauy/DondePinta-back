@@ -1,47 +1,68 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= Venue.model_name.human(count: 2) %></h1>
+  </div>
+</div>
 
-<h1>Listing Venues</h1>
+<div class="row">
+  <div class="col-lg-7">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="col-lg-4"><%= Venue.human_attribute_name('name') %></th>
+          <th class="col-lg-4"><%= Venue.human_attribute_name('foursquare_id') %></th>
+          <th class="col-lg-4"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Venue type</th>
-      <th>Department</th>
-      <th>City</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Web</th>
-      <th>Foursquare</th>
-      <th>Lat</th>
-      <th>Lng</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @venues.each do |venue| %>
+          <tr>
+            <td><%= venue.name %></td>
+            <td><%= link_to venue.foursquare_id, venue.foursquare_link %></td>
+            <td class="text-right">
+              <%= link_to edit_venue_path(venue), class: 'btn btn-primary btn-circle' do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to venue, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-circle' do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-  <tbody>
-    <% @venues.each do |venue| %>
-      <tr>
-        <td><%= venue.name %></td>
-        <td><%= venue.venue_type %></td>
-        <td><%= venue.department %></td>
-        <td><%= venue.city %></td>
-        <td><%= venue.address %></td>
-        <td><%= venue.phone %></td>
-        <td><%= venue.email %></td>
-        <td><%= venue.web %></td>
-        <td><%= venue.foursquare_id %></td>
-        <td><%= venue.lat %></td>
-        <td><%= venue.lng %></td>
-        <td><%= link_to 'Show', venue %></td>
-        <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-        <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="col-lg-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t 'helpers.submit.create', model: Venue.model_name.human %></h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @venue do |f| %>
+          <%= render 'shared/model_errors', model: @venue %>
 
-<br>
+          <div class="form-group">
+            <%= f.text_field :name, class: 'form-control', placeholder: Venue.human_attribute_name('name') %>
+          </div>
 
-<%= link_to 'New Venue', new_venue_path %>
+          <div class="form-group">
+            <%= f.text_field :venue_type, class: 'form-control', placeholder: Venue.human_attribute_name('venue_type') %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_field :foursquare_id, class: 'form-control', placeholder: Venue.human_attribute_name('foursquare_id') %>
+          </div>
+
+          <div class="form-group">
+            <%= f.collection_select :beer_ids, Beer.all, :id, :name, {}, class: 'form-control',
+              multiple: true %>
+          </div>
+
+          <%= f.submit class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

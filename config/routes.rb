@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :venues
+  resources :venues, except: [:new, :show]
   resources :beers, except: [:new, :show]
   resources :breweries, except: [:new, :show]
 

@@ -1,14 +1,8 @@
 class VenuesController < ApplicationController
-  before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  before_action :set_venue, only: [:edit, :update, :destroy]
 
   def index
     @venues = Venue.all
-  end
-
-  def show
-  end
-
-  def new
     @venue = Venue.new
   end
 
@@ -20,9 +14,12 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
+        format.html { redirect_to venues_url, notice: 'Venue was successfully created.' }
       else
-        format.html { render :new }
+        format.html do
+          @venues = Venue.all
+         render :index
+       end
       end
     end
   end
@@ -30,7 +27,7 @@ class VenuesController < ApplicationController
   def update
     respond_to do |format|
       if @venue.update(venue_params)
-        format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
+        format.html { redirect_to edit_venue_url(@venue), notice: 'Venue was successfully updated.' }
       else
         format.html { render :edit }
       end
