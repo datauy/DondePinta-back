@@ -24,7 +24,7 @@
 
       <div class="form-group">
         <%= f.label :beer_ids %>
-        <%= f.collection_select :beer_ids, Beer.all, :id, :name, {}, multiple: true,
+        <%= f.collection_select :beer_ids, Beer.all, :id, :description, {}, multiple: true,
           class: 'form-control' %>
       </div>
 
