@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rails', '4.2.2'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -12,6 +14,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'active_model_serializers'
 gem 'thor-rails'
 gem 'foursquare2'
+gem 'rails_12factor', group: :production
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
