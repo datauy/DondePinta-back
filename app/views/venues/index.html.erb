@@ -52,6 +52,10 @@
           </div>
 
           <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: Venue.human_attribute_name('email') %>
+          </div>
+
+          <div class="form-group">
             <%= f.text_field :foursquare_id, class: 'form-control', placeholder: Venue.human_attribute_name('foursquare_id') %>
           </div>
 

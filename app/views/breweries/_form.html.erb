@@ -14,7 +14,12 @@
 
       <div class="form-group">
         <%= f.label :brewery_type %>
-        <%= f.text_area :brewery_type, class: 'form-control' %>
+        <%= f.text_field :brewery_type, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
@@ -58,10 +63,6 @@
           <dl class="dl-horizontal">
             <dt><%= Brewery.human_attribute_name('phone') %></dt>
             <dd><%= @brewery.phone %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('email') %></dt>
-            <dd><%= @brewery.email %></dd>
           </dl>
           <dl class="dl-horizontal">
             <dt><%= Brewery.human_attribute_name('web') %></dt>

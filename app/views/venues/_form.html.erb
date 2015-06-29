@@ -18,6 +18,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :foursquare_id %>
         <%= f.text_field :foursquare_id, class: 'form-control' %>
       </div>
@@ -53,10 +58,6 @@
           <dl class="dl-horizontal">
             <dt><%= Venue.human_attribute_name('phone') %></dt>
             <dd><%= @venue.phone %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('email') %></dt>
-            <dd><%= @venue.email %></dd>
           </dl>
           <dl class="dl-horizontal">
             <dt><%= Venue.human_attribute_name('web') %></dt>
