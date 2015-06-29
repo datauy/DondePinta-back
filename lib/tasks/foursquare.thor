@@ -35,6 +35,7 @@ class Foursquare < Thor
           address: data.location.address,
           phone: data.contact.formattedPhone,
           web: data.url,
+          foursquare_url: data.canonicalUrl,
           lat: data.location.lat,
           lng: data.location.lng
         )

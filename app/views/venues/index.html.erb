@@ -19,7 +19,7 @@
         <% @venues.each do |venue| %>
           <tr>
             <td><%= venue.name %></td>
-            <td><%= link_to venue.foursquare_id, venue.foursquare_link %></td>
+            <td><%= link_to venue.foursquare_id, venue.foursquare_url %></td>
             <td class="text-right">
               <%= link_to edit_venue_path(venue), class: 'btn btn-primary btn-circle' do %>
                 <span class="glyphicon glyphicon-pencil"></span>

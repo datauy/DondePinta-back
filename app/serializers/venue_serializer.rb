@@ -8,6 +8,6 @@ class VenueSerializer < ActiveModel::Serializer
              :phone,
              :email,
              :web,
-             :foursquare_link,
+             :foursquare_url,
              :beers
 end
