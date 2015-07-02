@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :breweries, only: [:index, :show]
       resources :venues, only: [:index, :show]
-      resources :beers, only: :show
+      resources :beers, only: [:index, :show]
     end
   end
 
