@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 1
+  open: 2015-06-29 22:46:39
+  close: 2015-06-29 22:46:39
+  venue_id: 
+
+two:
+  day: 1
+  open: 2015-06-29 22:46:39
+  close: 2015-06-29 22:46:39
+  venue_id: 

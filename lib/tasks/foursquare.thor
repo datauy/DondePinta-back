@@ -25,6 +25,17 @@ class Foursquare < Thor
 
   private
 
+  def parse_time(time)
+    if (time.length == 5)
+      hour = time[1,2]
+      mins = time[3,2]
+    else
+      hour = time[0,2]
+      mins = time[2,2]
+    end
+    return Time.parse(hour.concat(":").concat(mins))
+  end
+
   def update_model(model)
     if model.foursquare_id.present?
       begin
