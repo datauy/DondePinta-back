@@ -18,7 +18,7 @@ gem 'rails_12factor', group: :production
 gem 'puma'
 
 group :development, :test do
-#  gem 'byebug'
+  gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
