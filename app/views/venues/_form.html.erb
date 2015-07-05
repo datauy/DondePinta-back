@@ -71,6 +71,37 @@
             <dt><%= Venue.human_attribute_name('lng') %></dt>
             <dd><%= @venue.lng %></dd>
           </dl>
+          <dl class="dl-horizontal">
+            <dt><%= Venue.human_attribute_name('openings') %></dt>
+            <dd>
+              <table class=table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Opening lapse</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% (0..6).each do |i| %>
+                  <tr>
+                    <td>
+                      <% case i
+                      when 0 %>Mon
+                      <% when 1 %>Tue
+                      <% when 2 %>Wed
+                      <% when 3 %>Thu
+                      <% when 4 %>Fri
+                      <% when 5 %>Sat
+                      <% when 6 %>Sun
+                    </td>
+                    <% end %>
+                    <td><%= @venue.openings[i] %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </dd>
+          </dl>
         </div>
       </div>
     </div>
