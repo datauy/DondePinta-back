@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629040254) do
+ActiveRecord::Schema.define(version: 20150629045742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 20150629040254) do
     t.datetime "updated_at",     null: false
     t.string   "foursquare_url"
   end
+
+  create_table "open_hours", force: :cascade do |t|
+    t.integer "day",                        null: false
+    t.time    "start",                      null: false
+    t.time    "end",                        null: false
+    t.boolean "next_day",   default: false, null: false
+    t.integer "venue_id",                   null: false
+    t.string  "venue_type",                 null: false
+  end
+
+  add_index "open_hours", ["venue_type", "venue_id"], name: "index_open_hours_on_venue_type_and_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string   "name"

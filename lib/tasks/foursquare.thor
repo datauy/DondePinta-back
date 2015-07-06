@@ -37,7 +37,8 @@ class Foursquare < Thor
           web: data.url,
           foursquare_url: data.canonicalUrl,
           lat: data.location.lat,
-          lng: data.location.lng
+          lng: data.location.lng,
+          open_hours: open_hours(data.id, model),
         )
         say_status :updated, "#{model.model_name.human} #{model.id} updated successfully", :green
       rescue => e
@@ -46,5 +47,30 @@ class Foursquare < Thor
     else
       say_status :ignoring, "#{model.model_name.human} #{model.id} doesn't have foursquare_id", :yellow
     end
+  end
+
+  def open_hours(id, model)
+    venue_hours(id).each_with_object([]) do |timeframe, hours|
+      timeframe.days.product(timeframe.open).each do |day, open|
+        hours <<  open_hour(day, open)
+      end
+    end
+  end
+
+  def venue_hours(id)
+    FoursquareService.client.venue_hours(id).hours.timeframes || []
+  end
+
+  def open_hour(day, open)
+    OpenHour.new(
+      day: day % 7,
+      start: time_for(open.start),
+      end: time_for(open.end),
+      next_day: open.end.starts_with?("+")
+    )
+  end
+
+  def time_for(time)
+    "#{time[-4..-3]}:#{time[-2..-1]}"
   end
 end

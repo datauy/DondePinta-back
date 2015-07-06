@@ -1,0 +1,13 @@
+<div class="panel panel-default foursquare">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= model.class.human_attribute_name('open_hours') %></h3>
+  </div>
+  <div class="panel-body">
+    <% model.grouped_open_hours.each do |day, hours| %>
+      <dl class="dl-horizontal">
+        <dt><%= I18n.t(:"date.day_names")[day] %></dt>
+        <dd><%= hours.map(&:description).join(', ') %></dd>
+      </dl>
+    <% end %>
+  </div>
+</div>
