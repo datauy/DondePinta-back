@@ -25,10 +25,42 @@ class Foursquare < Thor
 
   private
 
+  def parse_time(time)
+    if (time.length == 5)
+      hour = time[1,2]
+      mins = time[3,2]
+    else
+      hour = time[0,2]
+      mins = time[2,2]
+    end
+    return Time.parse(hour.concat(":").concat(mins))
+  end
+
   def update_model(model)
     if model.foursquare_id.present?
       begin
         data = FoursquareService.client.venue(model.foursquare_id)
+        aux = [[],[],[],[],[],[],[]]
+        data.venue_hours each do |item|
+          item.days each do |info|
+            if (aux[info-1] == "")
+              aux[info-1].push(concat(parse_time(item.start),
+                                      concat((" - "),
+                                       parse_time(item.end)
+                                      )
+                                     )
+                              )
+            else
+              aux[info-1].push(concat(" | ",
+                                     concat(parse_time(item.start),
+                                      concat((" - "),
+                                       parse_time(item.end)
+                                      )
+                                     )
+                                     )
+                              )
+          end
+        end
         model.update!(
           department: data.location.state,
           city: data.location.city,
@@ -37,7 +69,8 @@ class Foursquare < Thor
           web: data.url,
           foursquare_url: data.canonicalUrl,
           lat: data.location.lat,
-          lng: data.location.lng
+          lng: data.location.lng,
+          openings: aux
         )
         say_status :updated, "#{model.model_name.human} #{model.id} updated successfully", :green
       rescue => e

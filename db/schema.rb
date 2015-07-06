@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629040254) do
+ActiveRecord::Schema.define(version: 20150704151803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,9 +68,10 @@ ActiveRecord::Schema.define(version: 20150629040254) do
     t.string   "foursquare_id"
     t.decimal  "lat"
     t.decimal  "lng"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "foursquare_url"
+    t.string   "openings",       default: [],              array: true
   end
 
   add_foreign_key "beers", "breweries"
