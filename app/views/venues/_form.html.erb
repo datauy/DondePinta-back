@@ -38,41 +38,8 @@
     </div>
 
     <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Foursquare Info</h3>
-        </div>
-        <div class="panel-body">
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('department') %></dt>
-            <dd><%= @venue.department %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('city') %></dt>
-            <dd><%= @venue.city %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('address') %></dt>
-            <dd><%= @venue.address %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('phone') %></dt>
-            <dd><%= @venue.phone %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('web') %></dt>
-            <dd><%= @venue.web %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('lat') %></dt>
-            <dd><%= @venue.lat %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Venue.human_attribute_name('lng') %></dt>
-            <dd><%= @venue.lng %></dd>
-          </dl>
-        </div>
-      </div>
+      <%= render 'foursquare/info', model: @venue %>
+      <%= render 'foursquare/open_hours', model: @venue %>
     </div>
   <% end %>
 </div>

@@ -43,41 +43,8 @@
     </div>
 
     <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Foursquare Info</h3>
-        </div>
-        <div class="panel-body">
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('department') %></dt>
-            <dd><%= @brewery.department %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('city') %></dt>
-            <dd><%= @brewery.city %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('address') %></dt>
-            <dd><%= @brewery.address %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('phone') %></dt>
-            <dd><%= @brewery.phone %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('web') %></dt>
-            <dd><%= @brewery.web %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('lat') %></dt>
-            <dd><%= @brewery.lat %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt><%= Brewery.human_attribute_name('lng') %></dt>
-            <dd><%= @brewery.lng %></dd>
-          </dl>
-        </div>
-      </div>
+      <%= render 'foursquare/info', model: @brewery %>
+      <%= render 'foursquare/open_hours', model: @brewery %>
     </div>
   <% end %>
 </div>
