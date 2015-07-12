@@ -10,7 +10,9 @@ class VenueSerializer < ActiveModel::Serializer
              :web,
              :foursquare_url,
              :lat,
-             :lng
+             :lng,
+             :photo_prefix,
+             :photo_suffix
 
   has_many :open_hours
   has_many :beers, except: :brewery

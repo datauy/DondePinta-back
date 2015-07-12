@@ -39,6 +39,8 @@ class Foursquare < Thor
           lat: data.location.lat,
           lng: data.location.lng,
           open_hours: open_hours(data.id, model),
+          photo_prefix: data.bestPhoto.try(:prefix),
+          photo_suffix: data.bestPhoto.try(:suffix),
         )
         say_status :updated, "#{model.model_name.human} #{model.id} updated successfully", :green
       rescue => e
