@@ -1,6 +1,6 @@
 class Api::V1::BreweriesController < ApplicationController
   def index
-    @breweries = Brewery.all
+    @breweries = Brewery.all.includes(:beers, :open_hours)
     render json: @breweries
   end
 

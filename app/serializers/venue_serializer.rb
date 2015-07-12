@@ -9,5 +9,9 @@ class VenueSerializer < ActiveModel::Serializer
              :email,
              :web,
              :foursquare_url,
-             :beers
+             :lat,
+             :lng
+
+  has_many :open_hours
+  has_many :beers, except: :brewery
 end

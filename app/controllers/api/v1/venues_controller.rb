@@ -1,6 +1,6 @@
 class Api::V1::VenuesController < ApplicationController
   def index
-    @venues = Venue.all
+    @venues = Venue.all.includes(:beers, :open_hours)
     render json: @venues
   end
 
