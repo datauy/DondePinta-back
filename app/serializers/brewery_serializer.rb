@@ -12,5 +12,9 @@ class BrewerySerializer < ActiveModel::Serializer
              :foursquare_url,
              :lat,
              :lng,
-             :beers
+             :photo_prefix,
+             :photo_suffix
+
+  has_many :open_hours
+  has_many :beers, except: :brewery
 end

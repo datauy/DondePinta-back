@@ -6,6 +6,7 @@ class BeerSerializer < ActiveModel::Serializer
              :alcohol,
              :bitterness,
              :size,
-             :draft,
-             :brewery
+             :draft
+
+  has_one :brewery, except: :beers
 end

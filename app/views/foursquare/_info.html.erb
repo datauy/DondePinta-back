@@ -1,0 +1,35 @@
+<div class="panel panel-default foursquare">
+  <div class="panel-heading">
+    <h3 class="panel-title">Foursquare Info</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('department') %></dt>
+      <dd><%= model.department %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('city') %></dt>
+      <dd><%= model.city %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('address') %></dt>
+      <dd><%= model.address %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('phone') %></dt>
+      <dd><%= model.phone %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('web') %></dt>
+      <dd><%= model.web %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('lat') %></dt>
+      <dd><%= model.lat %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt><%= model.class.human_attribute_name('lng') %></dt>
+      <dd><%= model.lng %></dd>
+    </dl>
+  </div>
+</div>
