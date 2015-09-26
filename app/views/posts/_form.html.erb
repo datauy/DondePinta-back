@@ -1,0 +1,17 @@
+<%= form_for @post do |f| %>
+  <%= render 'shared/model_errors', model: @post %>
+  <div class="form-group">
+    <%= f.text_field :title, class: 'form-control', placeholder: Post.human_attribute_name('title')%>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :body, class: 'form-control', placeholder: Post.human_attribute_name('body')%>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :title, class: 'form-control', placeholder: Post.human_attribute_name('author')%>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary btn-block' %>
+
+<% end %>

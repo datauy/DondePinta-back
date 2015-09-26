@@ -4,12 +4,14 @@ Rails.application.routes.draw do
       resources :breweries, only: [:index, :show]
       resources :venues, only: [:index, :show]
       resources :beers, only: [:index, :show]
+      resources :posts, only: [:index, :show]
     end
   end
 
   resources :venues, except: [:new, :show]
   resources :beers, except: [:new, :show]
   resources :breweries, except: [:new, :show]
+  resources :posts, except: [:new, :show]
 
   root 'breweries#index'
 end
