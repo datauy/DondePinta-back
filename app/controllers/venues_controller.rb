@@ -1,4 +1,4 @@
-class VenuesController < ApplicationController
+class VenuesController < AdminController
   before_action :set_venue, only: [:edit, :update, :destroy]
 
   def index
