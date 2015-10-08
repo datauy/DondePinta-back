@@ -15,6 +15,7 @@ gem 'thor-rails'
 gem 'foursquare2'
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
