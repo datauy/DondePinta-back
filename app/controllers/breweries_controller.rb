@@ -1,4 +1,4 @@
-class BreweriesController < ApplicationController
+class BreweriesController < AdminController
   before_action :set_brewery, only: [:edit, :update, :destroy]
 
   def index
