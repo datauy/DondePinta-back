@@ -4,9 +4,11 @@ class VenuesController < AdminController
   def index
     @venues = Venue.all
     @venue = Venue.new
+    @beers = Beer.all.includes(:brewery).order('breweries.name')
   end
 
   def edit
+    @beers = Beer.all.includes(:brewery).order('breweries.name')
   end
 
   def create
@@ -18,7 +20,7 @@ class VenuesController < AdminController
       else
         format.html do
           @venues = Venue.all
-         render :index
+          render :index
        end
       end
     end

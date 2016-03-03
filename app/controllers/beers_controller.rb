@@ -2,8 +2,9 @@ class BeersController < AdminController
   before_action :set_beer, only: [:edit, :update, :destroy]
 
   def index
-    @beers = Beer.all
+    @beers = Beer.all.includes(:brewery).order('breweries.name')
     @beer = Beer.new
+    @breweries = Brewery.all.order(:name)
   end
 
   def edit
