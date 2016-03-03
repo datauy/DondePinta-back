@@ -2,17 +2,19 @@ class BeersController < AdminController
   before_action :set_beer, only: [:edit, :update, :destroy]
 
   def index
-    @beers = Beer.all.includes(:brewery).order('breweries.name')
+    @beers = Beer.all.includes(:brewery).includes(:style).order('breweries.name')
     @beer = Beer.new
     @breweries = Brewery.all.order(:name)
+    @styles = Style.all
   end
 
   def edit
+    @breweries = Brewery.all.order(:name)
+    @styles = Style.all
   end
 
   def create
     @beer = Beer.new(beer_params)
-
     respond_to do |format|
       if @beer.save
         format.html { redirect_to beers_url, notice: 'Beer was successfully created.' }
@@ -51,6 +53,6 @@ class BeersController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def beer_params
-    params.require(:beer).permit(:brewery_id, :brand, :style, :color, :alcohol, :bitterness, :size, :draft)
+    params.require(:beer).permit(:brewery_id, :brand, :style_id, :color, :alcohol, :bitterness, :size, :draft)
   end
 end

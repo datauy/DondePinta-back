@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008132141) do
+ActiveRecord::Schema.define(version: 20160303192020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beers", force: :cascade do |t|
     t.string   "brand",      null: false
-    t.string   "style",      null: false
     t.string   "color"
     t.string   "alcohol"
     t.string   "bitterness"
@@ -27,9 +26,11 @@ ActiveRecord::Schema.define(version: 20151008132141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "brewery_id", null: false
+    t.integer  "style_id"
   end
 
   add_index "beers", ["brewery_id"], name: "index_beers_on_brewery_id", using: :btree
+  add_index "beers", ["style_id"], name: "index_beers_on_style_id", using: :btree
 
   create_table "beers_venues", id: false, force: :cascade do |t|
     t.integer "venue_id", null: false
@@ -68,6 +69,12 @@ ActiveRecord::Schema.define(version: 20151008132141) do
   end
 
   add_index "open_hours", ["venue_type", "venue_id"], name: "index_open_hours_on_venue_type_and_venue_id", using: :btree
+
+  create_table "styles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
@@ -108,4 +115,5 @@ ActiveRecord::Schema.define(version: 20151008132141) do
   end
 
   add_foreign_key "beers", "breweries"
+  add_foreign_key "beers", "styles"
 end
