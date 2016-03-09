@@ -4,6 +4,7 @@ class Beer < ActiveRecord::Base
   validates :brewery, :brand, :style, presence: true
 
   def description
-    [brand, style.name].join(' - ')
+    #TODO - add style once the data is fixed
+    brand
   end
 end
